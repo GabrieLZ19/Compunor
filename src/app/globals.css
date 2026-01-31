@@ -1,26 +1,50 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-gamer-red: var(--gamer-red);
+  --color-gamer-dark: var(--gamer-dark);
+  --color-gamer-card: var(--gamer-card);
+  --color-gamer-neon: var(--gamer-neon);
+
+  --font-sans: var(--font-montserrat); /* Changed to Montserrat for body */
+  --font-display: var(--font-rajdhani);
+}
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+
+  --gamer-red: #e60000;
+  --gamer-dark: #f0f0f0; /* Lighter background for light mode "dark" elements? Or kept dark? */
+  --gamer-card: #f5f5f5;
+  --gamer-neon: #008fa3; /* Darker cyan for light mode readability */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #050505;
+  --foreground: #ededed;
+
+  --gamer-red: #e60000;
+  --gamer-dark: #0a0a0a;
+  --gamer-card: #121212;
+  --gamer-neon: #00b2cc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 5px rgba(0, 178, 204, 0.5); /* Reduced glow */
+  }
+  .box-glow {
+    box-shadow: 0 0 10px rgba(0, 178, 204, 0.1); /* Reduced glow */
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), sans-serif;
 }
