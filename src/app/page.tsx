@@ -35,18 +35,10 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16">
+      <section className="py-1">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-4">
-              Productos Destacados
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Lo mejor de nuestra selección para tu setup
-            </p>
-          </div>
           <FeaturedProducts />
-          <div className="mt-12 text-center">
+          <div className="mb-8 text-center">
             <Link
               href="/catalogo"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold rounded-lg hover:opacity-90 transition-opacity"
