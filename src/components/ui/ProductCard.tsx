@@ -36,7 +36,9 @@ export function ProductCard({ product, featured }: ProductCardProps) {
             src={product.image_url || "/images/placeholder.png"}
             alt={product.name}
             fill
-            className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            loading="lazy"
+            className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
           />
 
           {/* Category Badge - Bottom Left */}
@@ -60,7 +62,7 @@ export function ProductCard({ product, featured }: ProductCardProps) {
               </span>
               {product.is_on_sale && product.sale_price ? (
                 <div className="flex flex-col">
-                  <span className="text-sm text-gray-400 line-through">
+                  <span className="text-sm text-gray-600 dark:text-gray-300 line-through">
                     ${product.price.toLocaleString("es-AR")}
                   </span>
                   <span className="text-2xl font-bold text-gamer-red dark:text-gamer-neon dark:text-glow">

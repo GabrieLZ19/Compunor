@@ -23,6 +23,7 @@ export function Navbar() {
                   src="/logo.jpg"
                   alt="Compunor Logo"
                   fill
+                  sizes="48px"
                   className="object-cover"
                 />
               </div>
@@ -69,12 +70,14 @@ export function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white focus:outline-none"
+              aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={isOpen}
+              className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-gamer-red focus:ring-offset-2 rounded-lg"
             >
               {isOpen ? (
-                <X className="h-8 w-8" />
+                <X className="h-8 w-8" aria-hidden="true" />
               ) : (
-                <Menu className="h-8 w-8" />
+                <Menu className="h-8 w-8" aria-hidden="true" />
               )}
             </button>
           </div>

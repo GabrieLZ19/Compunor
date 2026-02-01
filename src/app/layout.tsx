@@ -9,17 +9,20 @@ import { ThemeProvider } from "@/providers/theme-provider";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const rajdhani = Rajdhani({
   variable: "--font-rajdhani",
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -39,8 +42,17 @@ export default function RootLayout({
         className={`${inter.variable} ${rajdhani.variable} ${montserrat.variable} antialiased bg-background text-foreground transition-colors duration-300`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {/* Skip Link for Accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-gamer-red focus:text-white focus:rounded-lg focus:font-bold"
+          >
+            Saltar al contenido principal
+          </a>
           <Navbar />
-          <main className="pt-20">{children}</main>
+          <main id="main-content" className="pt-20">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -60,11 +60,27 @@ export function HomeBanners() {
     setCurrentIndex((prev) => (prev - 1 + banners.length) % banners.length);
   };
 
-  // Show nothing while loading, but don't delay banner display
-  if (loading) return null;
+  // Show skeleton placeholder to prevent CLS (Cumulative Layout Shift)
+  if (loading) {
+    return (
+      <section className="relative w-full bg-gray-50 dark:bg-gamer-dark/30 py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="relative aspect-[3/1] rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 animate-pulse" />
+        </div>
+      </section>
+    );
+  }
 
-  // If no banners, don't render
-  if (banners.length === 0) return null;
+  // If no banners, show minimal height to prevent shift
+  if (banners.length === 0) {
+    return (
+      <section className="relative w-full bg-gray-50 dark:bg-gamer-dark/30 py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="relative aspect-[3/1] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900" />
+        </div>
+      </section>
+    );
+  }
 
   const currentBanner = banners[currentIndex];
 
@@ -75,12 +91,14 @@ export function HomeBanners() {
           {/* Banner Content */}
           <Link
             href={currentBanner.link_url || "#"}
+            aria-label={currentBanner.title || "Ver promoción"}
             className="block relative aspect-[3/1] rounded-2xl overflow-hidden bg-gray-200 dark:bg-black/30"
           >
             <Image
               src={currentBanner.image_url}
-              alt={currentBanner.title}
+              alt={currentBanner.title || "Banner promocional"}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               priority
             />
@@ -109,13 +127,15 @@ export function HomeBanners() {
             <>
               <button
                 onClick={prevBanner}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/90 rounded-full flex items-center justify-center text-gray-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white dark:hover:bg-black"
+                aria-label="Banner anterior"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/90 rounded-full flex items-center justify-center text-gray-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white dark:hover:bg-black focus:opacity-100 focus:ring-2 focus:ring-gamer-red"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={nextBanner}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/90 rounded-full flex items-center justify-center text-gray-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white dark:hover:bg-black"
+                aria-label="Siguiente banner"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-black/90 rounded-full flex items-center justify-center text-gray-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white dark:hover:bg-black focus:opacity-100 focus:ring-2 focus:ring-gamer-red"
               >
                 <ChevronRight size={24} />
               </button>
@@ -129,7 +149,9 @@ export function HomeBanners() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  aria-label={`Ir al banner ${index + 1}`}
+                  aria-current={index === currentIndex ? "true" : undefined}
+                  className={`w-2 h-2 rounded-full transition-all focus:ring-2 focus:ring-white ${
                     index === currentIndex
                       ? "bg-white w-8"
                       : "bg-white/50 hover:bg-white/75"

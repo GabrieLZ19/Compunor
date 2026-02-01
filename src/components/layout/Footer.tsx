@@ -11,7 +11,7 @@ export function Footer() {
             <h3 className="font-display font-black text-2xl text-gray-900 dark:text-white mb-3">
               COMPUNOR
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-md">
+            <p className="text-gray-700 dark:text-gray-300 mb-4 max-w-md">
               Tu tienda de confianza para hardware gaming en Tucumán.
               Componentes de calidad, asesoramiento experto y los mejores
               precios.
@@ -21,17 +21,19 @@ export function Footer() {
                 href="https://www.facebook.com/compunortucuman?locale=es_LA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-200 dark:bg-white/10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gamer-red hover:text-white transition-colors"
+                aria-label="Seguinos en Facebook"
+                className="w-10 h-10 bg-gray-200 dark:bg-white/10 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gamer-red hover:text-white transition-colors"
               >
-                <Facebook size={20} />
+                <Facebook size={20} aria-hidden="true" />
               </a>
               <a
                 href="https://www.instagram.com/compunortucuman?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-200 dark:bg-white/10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-gamer-red hover:text-white transition-colors"
+                aria-label="Seguinos en Instagram"
+                className="w-10 h-10 bg-gray-200 dark:bg-white/10 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gamer-red hover:text-white transition-colors"
               >
-                <Instagram size={20} />
+                <Instagram size={20} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -45,7 +47,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="text-gray-600 dark:text-gray-400 hover:text-gamer-red transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-gamer-red transition-colors"
                 >
                   Inicio
                 </Link>
@@ -53,7 +55,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/catalogo"
-                  className="text-gray-600 dark:text-gray-400 hover:text-gamer-red transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-gamer-red transition-colors"
                 >
                   Catálogo
                 </Link>
@@ -67,8 +69,12 @@ export function Footer() {
               Contacto
             </h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-gray-600 dark:text-gray-400">
-                <MapPin size={18} className="mt-0.5 flex-shrink-0" />
+              <li className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                <MapPin
+                  size={18}
+                  className="mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=LAPRIDA+636,+San+Miguel+de+Tucumán,+Argentina,+4000"
                   target="_blank"
@@ -78,8 +84,12 @@ export function Footer() {
                   LAPRIDA 636, San Miguel de Tucumán, Argentina, 4000
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-gray-600 dark:text-gray-400">
-                <Phone size={18} className="mt-0.5 shrink-0" />
+              <li className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                <Phone
+                  size={18}
+                  className="mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
                 <div className="flex flex-col text-sm">
                   <a
                     href="tel:+5493816198344"
@@ -95,9 +105,18 @@ export function Footer() {
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-2 text-gray-600 dark:text-gray-400">
-                <Mail size={18} className="mt-0.5 flex-shrink-0" />
-                <span className="text-sm">info@compunor.com</span>
+              <li className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                <Mail
+                  size={18}
+                  className="mt-0.5 shrink-0"
+                  aria-hidden="true"
+                />
+                <a
+                  href="mailto:info@compunor.com"
+                  className="text-sm hover:text-gamer-red transition-colors"
+                >
+                  info@compunor.com
+                </a>
               </li>
             </ul>
           </div>
@@ -105,7 +124,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-black/10 dark:border-white/10 text-center">
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
             © {new Date().getFullYear()} Compunor. Todos los derechos
             reservados.
           </p>

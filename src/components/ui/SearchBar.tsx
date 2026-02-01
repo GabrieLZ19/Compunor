@@ -45,10 +45,13 @@ export function SearchBar() {
 
       setLoading(true);
       try {
+        // Search in multiple fields using OR
         const { data, error } = await supabase
           .from("products")
           .select("id, name, price, image_url, category")
-          .ilike("name", `%${query}%`)
+          .or(
+            `name.ilike.%${query}%,description.ilike.%${query}%,category.ilike.%${query}%`,
+          )
           .limit(5);
 
         if (error) throw error;
