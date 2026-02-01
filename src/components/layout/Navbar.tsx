@@ -100,12 +100,8 @@ export function Navbar() {
             >
               Catálogo
             </Link>
-            <div className="pt-4">
-              <input
-                type="text"
-                placeholder="Buscar productos..."
-                className="w-full bg-gray-100 dark:bg-white/5 border border-transparent dark:border-white/20 rounded-lg py-3 px-4 text-gray-800 dark:text-white focus:border-gamer-red dark:focus:border-gamer-neon outline-none placeholder:text-gray-400"
-              />
+            <div className="pt-4 relative z-50">
+              <SearchBar />
             </div>
           </div>
         </div>

@@ -85,7 +85,7 @@ export function SearchBar() {
         placeholder="Buscar productos..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="bg-gray-100 dark:bg-black/50 border border-transparent dark:border-white/10 rounded-full py-1.5 pl-10 pr-10 text-sm text-gray-800 dark:text-gray-300 focus:outline-none focus:bg-white dark:focus:bg-black/50 focus:border-gamer-red dark:focus:border-gamer-neon focus:ring-1 focus:ring-gamer-red dark:focus:ring-gamer-neon w-48 lg:w-64 transition-all placeholder:text-gray-400"
+        className="bg-gray-100 dark:bg-black/50 border border-transparent dark:border-white/10 rounded-full py-2.5 md:py-1.5 pl-10 pr-10 text-sm text-gray-800 dark:text-gray-300 focus:outline-none focus:bg-white dark:focus:bg-black/50 focus:border-gamer-red dark:focus:border-gamer-neon focus:ring-1 focus:ring-gamer-red dark:focus:ring-gamer-neon w-full md:w-48 lg:w-64 transition-all placeholder:text-gray-400"
       />
       {query && (
         <button
