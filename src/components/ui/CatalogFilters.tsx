@@ -63,16 +63,16 @@ export function CatalogFilters({
 
   return (
     <>
-      {/* Mobile Filter Button */}
-      <div className="md:hidden mb-6">
+      {/* Mobile Filter Button - Fixed Top below Navbar */}
+      <div className="lg:hidden fixed top-20 left-0 right-0 z-40 px-4 py-2  dark:bg-gamer-dark/95 backdrop-blur-md border-b border-black/5 dark:border-white/5">
         <button
           onClick={() => setShowMobileFilters(!showMobileFilters)}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-gamer-card border border-black/10 dark:border-white/10 rounded-lg text-gray-900 dark:text-white font-medium hover:border-gamer-red dark:hover:border-gamer-neon transition-colors"
+          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white rounded-full text-white dark:text-black font-bold shadow-lg"
         >
-          <SlidersHorizontal size={20} />
-          Filtros
+          <SlidersHorizontal size={20} className="text-gamer-red" />
+          <span>Filtrar y Ordenar</span>
           {filters.category !== "Todos" && (
-            <span className="px-2 py-0.5 bg-gamer-red text-white text-xs rounded-full">
+            <span className="px-2 py-0.5 bg-gamer-red text-white text-xs font-bold rounded-full ml-1">
               1
             </span>
           )}
@@ -82,8 +82,10 @@ export function CatalogFilters({
       {/* Filters Panel */}
       <div
         className={`${
-          showMobileFilters ? "block" : "hidden"
-        } md:block space-y-6 bg-white dark:bg-gamer-card border border-black/10 dark:border-white/10 rounded-xl p-6`}
+          showMobileFilters
+            ? "block fixed inset-0 z-50 overflow-y-auto p-4 bg-gray-50 dark:bg-gamer-dark"
+            : "hidden"
+        } lg:block space-y-6 bg-white dark:bg-gamer-card border border-black/10 dark:border-white/10 rounded-xl p-6 shadow-sm`}
       >
         {/* Header */}
         <div className="flex items-center justify-between">
